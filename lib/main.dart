@@ -91,38 +91,47 @@ class HomeScreen extends StatelessWidget {
                         CategoryCard(
                           title: "",
                           svgSrc: "assets/icons/bank.svg",
+                          press: () {},
                         ),
                         CategoryCard(
                           title: "",
                           svgSrc: "assets/icons/Deposito.svg",
+                          press: () {},
                         ),
                         CategoryCard(
                           title: "",
                           svgSrc: "assets/icons/Kredit.svg",
+                          press: () {},
                         ),
                         CategoryCard(
                           title: "",
                           svgSrc: "assets/icons/Kredit.svg",
+                          press: () {},
                         ),
                         CategoryCard(
                           title: "",
                           svgSrc: "assets/icons/Kredit.svg",
+                          press: () {},
                         ),
                         CategoryCard(
                           title: "",
                           svgSrc: "assets/icons/Kredit.svg",
+                          press: () {},
                         ),
                         CategoryCard(
                           title: "",
                           svgSrc: "assets/icons/Kredit.svg",
+                          press: () {},
                         ),
                         CategoryCard(
                           title: "",
                           svgSrc: "assets/icons/Kredit.svg",
+                          press: () {},
                         ),
                         CategoryCard(
                           title: "",
                           svgSrc: "assets/icons/Kredit.svg",
+                          press: () {},
                         ),
                       ],
                     ),
@@ -140,42 +149,59 @@ class HomeScreen extends StatelessWidget {
 class CategoryCard extends StatelessWidget {
   final String svgSrc;
   final String title;
+  final Function press;
   const CategoryCard({
     Key? key,
     required this.svgSrc,
     required this.title,
+    required this.press,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(
-            Radius.circular(13),
+    return ClipRRect(
+      borderRadius: BorderRadius.all(
+        Radius.circular(13),
+      ),
+      child: Container(
+        // padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(
+              Radius.circular(13),
+            ),
+            boxShadow: [
+              BoxShadow(
+                  offset: Offset(0, 17),
+                  blurRadius: 17,
+                  spreadRadius: -23,
+                  color: kShadowColor)
+            ]),
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: () {},
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                children: <Widget>[
+                  Spacer(),
+                  SvgPicture.asset(
+                    svgSrc,
+                    height: 80,
+                    width: 80,
+                  ),
+                  Spacer(),
+                  Text(
+                    title,
+                    style:
+                        TextStyle(fontWeight: FontWeight.w900, fontSize: 20.0),
+                  ),
+                ],
+              ),
+            ),
           ),
-          boxShadow: [
-            BoxShadow(
-                offset: Offset(0, 20),
-                blurRadius: 20,
-                spreadRadius: -23,
-                color: kShadowColor)
-          ]),
-      child: Column(
-        children: <Widget>[
-          Spacer(),
-          SvgPicture.asset(
-            svgSrc,
-            height: 80,
-            width: 80,
-          ),
-          Spacer(),
-          Text(
-            title,
-            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20.0),
-          ),
-        ],
+        ),
       ),
     );
   }
