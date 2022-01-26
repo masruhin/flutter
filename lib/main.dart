@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(20)),
               image: DecorationImage(
                 alignment: Alignment.centerLeft,
-                image: AssetImage("assets/images/undraw_pilates_gpdb.png"),
+                image: AssetImage("assets/images/bpr.png"),
               ),
             ),
           ),
@@ -48,6 +48,7 @@ class HomeScreen extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Align(
                     alignment: Alignment.topRight,
@@ -61,11 +62,119 @@ class HomeScreen extends StatelessWidget {
                       ),
                       child: SvgPicture.asset("assets/icons/menu.svg"),
                     ),
+                  ),
+                  Text("Selamat Datang",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w900, fontSize: 30.0)),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 30),
+                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(29.5))),
+                    height: 45,
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: "Cari",
+                        icon: SvgPicture.asset("assets/icons/search.svg"),
+                        border: InputBorder.none,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: GridView.count(
+                      crossAxisCount: 3,
+                      childAspectRatio: .85,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      children: <Widget>[
+                        CategoryCard(
+                          title: "",
+                          svgSrc: "assets/icons/bank.svg",
+                        ),
+                        CategoryCard(
+                          title: "",
+                          svgSrc: "assets/icons/Deposito.svg",
+                        ),
+                        CategoryCard(
+                          title: "",
+                          svgSrc: "assets/icons/Kredit.svg",
+                        ),
+                        CategoryCard(
+                          title: "",
+                          svgSrc: "assets/icons/Kredit.svg",
+                        ),
+                        CategoryCard(
+                          title: "",
+                          svgSrc: "assets/icons/Kredit.svg",
+                        ),
+                        CategoryCard(
+                          title: "",
+                          svgSrc: "assets/icons/Kredit.svg",
+                        ),
+                        CategoryCard(
+                          title: "",
+                          svgSrc: "assets/icons/Kredit.svg",
+                        ),
+                        CategoryCard(
+                          title: "",
+                          svgSrc: "assets/icons/Kredit.svg",
+                        ),
+                        CategoryCard(
+                          title: "",
+                          svgSrc: "assets/icons/Kredit.svg",
+                        ),
+                      ],
+                    ),
                   )
                 ],
               ),
             ),
           )
+        ],
+      ),
+    );
+  }
+}
+
+class CategoryCard extends StatelessWidget {
+  final String svgSrc;
+  final String title;
+  const CategoryCard({
+    Key? key,
+    required this.svgSrc,
+    required this.title,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(
+            Radius.circular(13),
+          ),
+          boxShadow: [
+            BoxShadow(
+                offset: Offset(0, 20),
+                blurRadius: 20,
+                spreadRadius: -23,
+                color: kShadowColor)
+          ]),
+      child: Column(
+        children: <Widget>[
+          Spacer(),
+          SvgPicture.asset(
+            svgSrc,
+            height: 80,
+            width: 80,
+          ),
+          Spacer(),
+          Text(
+            title,
+            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20.0),
+          ),
         ],
       ),
     );
