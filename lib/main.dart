@@ -1,14 +1,14 @@
 import 'package:e_branch/constrants.dart';
+import 'package:e_branch/widget/bottom_nav_bar.dart';
+import 'package:e_branch/widget/category_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/flutter_svg.dart' show SvgPicture;
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  // const MyApp({Key? key}) : super(key: key);
 
   //test commit
   // This widget is the root of your application.
@@ -32,6 +32,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      bottomNavigationBar: BottomNavBar(),
       body: Stack(
         children: <Widget>[
           Container(
@@ -64,7 +65,7 @@ class HomeScreen extends StatelessWidget {
                       child: SvgPicture.asset("assets/icons/menu.svg"),
                     ),
                   ),
-                  Text("Selamat Datang",
+                  Text("",
                       style: TextStyle(
                           fontWeight: FontWeight.w900, fontSize: 30.0)),
                   Container(
@@ -142,67 +143,6 @@ class HomeScreen extends StatelessWidget {
             ),
           )
         ],
-      ),
-    );
-  }
-}
-
-class CategoryCard extends StatelessWidget {
-  final String svgSrc;
-  final String title;
-  final Function press;
-  const CategoryCard({
-    Key? key,
-    required this.svgSrc,
-    required this.title,
-    required this.press,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.all(
-        Radius.circular(13),
-      ),
-      child: Container(
-        // padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.all(
-              Radius.circular(13),
-            ),
-            boxShadow: [
-              BoxShadow(
-                  offset: Offset(0, 17),
-                  blurRadius: 17,
-                  spreadRadius: -23,
-                  color: kShadowColor)
-            ]),
-        child: Material(
-          color: Colors.transparent,
-          child: InkWell(
-            onTap: () {},
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                children: <Widget>[
-                  Spacer(),
-                  SvgPicture.asset(
-                    svgSrc,
-                    height: 80,
-                    width: 80,
-                  ),
-                  Spacer(),
-                  Text(
-                    title,
-                    style:
-                        TextStyle(fontWeight: FontWeight.w900, fontSize: 20.0),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
       ),
     );
   }
